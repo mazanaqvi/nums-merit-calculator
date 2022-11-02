@@ -25,6 +25,21 @@
             outline: none;
         }
 
+        .resultText {
+            text-align: center;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 19px;
+            font-weight: 500;
+            color: #17b9d5;
+        }
+
+        .resultfield {
+            text-align: center;
+            font-family: Roboto, Arial, sans-serif;
+
+            background: #17B8D5E9;
+        }
+
         body {
             display: flex;
             justify-content: center;
@@ -189,25 +204,26 @@
             <h3> Add your SSC, HSSC & NUMS scores to evaluate your aggregate as per PMC aggregate formula for NUMS 2022.
             </h3>.
             </p>
-            <b> SSC Marks</b>
-            <input type="number" id="ssc_marks" placeholder="SSC Marks">
+            <b> Obtained SSC Marks</b>
+            <input type="number" id="ssc_marks" placeholder="Obtained SSC Marks">
             <b>SSC Total Marks</b>
 
             <input type="number" id="ssc_total_marks" placeholder="SSC Total Marks">
-            <b>HSSC Marks</b>
+            <b>Obtained HSSC Marks</b>
 
-            <input type="number" id="hssc_marks" placeholder="HSSC Marks">
+            <input type="number" id="hssc_marks" placeholder="Obtained HSSC Marks">
             <b>HSSC Total Marks</b>
 
             <input type="number" id="hssc_total_marks" placeholder="HSSC Total Marks">
-            <b>NUMS Marks</b>
+            <b>NUMS Percentage</b>
 
-            <input type="number" id="NUMS_marks" placeholder="NUMS Marks">
-            <b>NUMS Aggregate</b>
+            <input type="number" id="NUMS_marks" placeholder="NUMS Percentage">
 
-            <input type="text" id="result" readonly>
             <button type="button" onclick="calculate()">Calculate</button>
-
+            <div class="center">
+                <p class="resultText">NUMS Aggregate</p>
+            </div>
+            <input class="resultfield" type="text" id="result" readonly>
         </div>
     </form>
     <script>
@@ -222,7 +238,7 @@
             var NUMS_marks = parseInt(document.getElementById('NUMS_marks').value);
             var ssc_percentage = (ssc_marks / ssc_total_marks) * 10;
             var hssc_percentage = (hssc_marks / hssc_total_marks) * 40;
-            var NUMS_percentage = (NUMS_marks / 150) * 50;
+            var NUMS_percentage = (NUMS_marks) * 0.5;
             var total_percentage = 0;
             total_percentage = ssc_percentage + hssc_percentage + NUMS_percentage;
             result.value = total_percentage.toFixed(2);
